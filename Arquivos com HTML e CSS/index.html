@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendador de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>LegendList</h1>
+        <div id="itensDire">
+            <div id="users">
+                <p>Nome:</p>
+                <p>vitor.kuhnen</p>
+            </div>
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+    </header>
+    <section>
+
+        <div id="main">
+            <h3 id="titulo">Sua Lista de Tarefas</h3>
+            <a id="novaTarefa" href="">Nova Tarefa +</a>
+            <table id="tabela">
+                <tbody id="cabecario">
+                    <tr id="tmTitulo">
+                        <th id="nmTarefa">Tarefas</th>
+                        <th id="nmDesc">Descrição</th>
+                        <th id="nmData">Data</th>
+                        <th id="nmStatus">Status</th>
+                        <th id="links"></th>
+                    </tr>
+                </tbody>
+                <tbody id="tbody">
+                    <tr>
+                        <td><a href="">Acorda</a></td>
+                        <td>Matuto</td>
+                        <td>06/110/2022 - 19:35</td>
+                        <td>Bluquiadu</td>
+                        <td id="buttons">
+                            <i id="finalizar" class="fa-solid fa-check"></i>
+                            <i id="editar" class="fa-solid fa-pen-to-square"></i>
+                            <i id="excluir" class="fa-solid fa-trash-can"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="paginacao">
+                <a href="">1</a>
+                <a href="">2</a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

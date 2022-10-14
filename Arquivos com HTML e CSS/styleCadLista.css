@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 2%;
+    background: linear-gradient(180grad, #3BDAF7, #33D6C3);
+    height: 6%;
+}
+
+#itensDire {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    font-size: 120%;
+}
+
+#users {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    gap: 2%;
+}
+
+#itens {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px;
+    gap: 15px;
+
+}
+
+#btAlt{
+    display: flex;
+    gap: 2%;
+    font-size: 18px;
+}
+
+#btBotoes{
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+    font-size: 18px;
+    
+}
+
+#btClose:hover{
+    transition: 0.4s;
+    transform: scale(1.1);
+    color: red;
+}
+
+#btAlt>div{
+    text-align: center;
+}
+
+#btAlt>div>a{
+    color: black;
+    font-weight: bold;
+}
+
+#btFinalizar:hover, #btFinalizar>a:hover{
+    transition: 0.4s;
+    transform: scale(1.1);
+    color: green;
+}
+
+#btEditar:hover, #btEditar>a:hover{
+    transition: 0.4s;
+    transform: scale(1.1);
+    color: rgb(184, 165, 0);
+}
+
+#btExcluir:hover, #btExcluir>a:hover{
+    transition: 0.4s;
+    transform: scale(1.1);
+    color: red;
+}
+
+
+#tituloTarefa {
+
+    width: 20%;
+    height: 50px;
+    display: flex;
+    text-align: center;
+
+}
+
+#descricao {
+    width: 50%;
+    height: 200px;
+    padding: 20px;
+}
+
+#dataHora {
+    width: 150px;
+}
+
+#cars {
+    width: 150px;
+}
+
+#btCad {
+    width: 10%;
+    height: 30px;
+    text-align: center;
+}
+
+
+#btCadSalv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 0 0 6px 1px black;
+    background-color: #188a3a;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+#btCadSalv:hover{
+    transition: 0.5s;
+    transform: scale(1.1);
+}
