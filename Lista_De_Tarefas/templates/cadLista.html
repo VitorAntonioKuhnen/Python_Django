@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt_br">
 
@@ -6,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Lista</title>
-    <link rel="stylesheet" href="styleCadLista.css">
+    <link rel="stylesheet" href="{% static 'css/styleCadLista.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <script defer src="script.js"></script>
 </head>
@@ -23,6 +25,7 @@
         </div>
     </header> -->
     <section>
+        <form method="POST" action="{% url 'adicionar_item' %}"> {% csrf_token %}
         <div id="itens">
             <div id="btBotoes">
                 <div id="btAlt">
@@ -49,21 +52,22 @@
                 </div>
             </div>
             <p>Titulo</p>
-            <input type="text" id="tituloTarefa">
+            <input name="titulo" type="text" id="tituloTarefa">
             <p>Descrição</p>
-            <input type="text" id="descricao">
+            <input name="descricao" type="text" id="descricao">
             <p>Data</p>
-            <input type="date" name="" id="dataHora">
+            <input name="datas" type="date" name="" id="dataHora">
             <p>Status</p>
-            <select name="cars" id="cars">
+            <select name="status" name="cars" id="cars">
                 <option value="pendente">Pendente</option>
-                <option value="agendado">Agendado</option>
                 <option value="finalizado">Finalizado</option>
             </select>
             <div id="btCad">
-                <a onclick="btCadastrar()" id="btCadSalv" href="">Cadastrar</a>
+                <button type="submit" id="btCadSalv">Cadastrar</button>
+                {% comment %} <a onclick="btCadastrar()" id="btCadSalv" href="">Cadastrar</a> {% endcomment %}
             </div>
         </div>
+    </form>
     </section>
 </body>
 
