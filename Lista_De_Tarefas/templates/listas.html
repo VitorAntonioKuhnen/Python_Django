@@ -52,9 +52,15 @@
                         <td>{{tarefa.datas}}</td>
                         <td>{{tarefa.status}}</td>
                         <td id="buttons">
-                            <i id="finalizar" class="fa-solid fa-check"></i>
+                            <a href="{% url 'altStatus' tarefa.id %}">
+                                <i id="finalizar" class="fa-solid fa-check"></i>
+                            </a>
+                            
                             <i id="editar" class="fa-solid fa-pen-to-square"></i>
-                            <i id="excluir" class="fa-solid fa-trash-can"></i>
+                            <a href="{% url 'deletar' tarefa.id %}">
+                                <i id="excluir" href="{% url 'deletar' tarefa.id %}"class="fa-solid fa-trash-can"></i>
+                                </a>
+                            <!-- <i id="excluir" href="{% url 'deletar' tarefa.id %}" class="fa-solid fa-trash-can"></i> -->
                         </td>
                     </tr>
                     {% endfor %}

@@ -14,11 +14,27 @@ def adicionar_item(request):
     datas = request.POST.get('datas')
     status = request.POST.get('status')
 
-    if status == 'Pendente':
+    if status == 'pendente':  #Pega pelo campo "Value="pendente"" e não pelo nome do item 
         status = False
     else:
         status = True
-
+    
     Tarefas.objects.create(titulo=titulo, descricao=descricao, datas=datas, status=status)
     
     return redirect('index')
+
+def deletar(request, id):
+    Tarefas.objects.get(id=id).delete()
+    return redirect('index')
+
+
+def altStatus(request, id):
+    tf = Tarefas.objects.get(id=id)
+    
+    if tf.status == True:
+        tf.status = False
+    else:
+        tf.status = True
+    tf.save()   
+    return redirect('index')
+      
