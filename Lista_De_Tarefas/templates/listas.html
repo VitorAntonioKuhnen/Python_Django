@@ -47,7 +47,7 @@
 
                     {% for tarefa in tarefas %}
                     <tr id="tbody">
-                        <td><a href="">{{tarefa.titulo}}</a></td>
+                        <td><a href="{% url 'editar' tarefa.id %}">{{tarefa.titulo}}</a></td>
                         <td>{{tarefa.descricao}}</td>
                         <td>{{tarefa.datas}}</td>
                         <td>{{tarefa.status}}</td>
@@ -55,11 +55,13 @@
                             <a href="{% url 'altStatus' tarefa.id %}">
                                 <i id="finalizar" class="fa-solid fa-check"></i>
                             </a>
-                            
-                            <i id="editar" class="fa-solid fa-pen-to-square"></i>
+                            <a href="{% url 'editar' tarefa.id %}">
+                                <i id="editar" class="fa-solid fa-pen-to-square"></i>
+                            </a>
+
                             <a href="{% url 'deletar' tarefa.id %}">
-                                <i id="excluir" href="{% url 'deletar' tarefa.id %}"class="fa-solid fa-trash-can"></i>
-                                </a>
+                                <i id="excluir" href="{% url 'deletar' tarefa.id %}" class="fa-solid fa-trash-can"></i>
+                            </a>
                             <!-- <i id="excluir" href="{% url 'deletar' tarefa.id %}" class="fa-solid fa-trash-can"></i> -->
                         </td>
                     </tr>

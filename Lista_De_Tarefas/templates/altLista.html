@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Lista</title>
+    <link rel="stylesheet" href="{% static 'css/styleCadLista.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- <header>
+        <h1>LegendList</h1>
+        <div id="itensDire">
+            <div id="users">
+                <p>Nome:</p>
+                <p>vitor.kuhnen</p>
+            </div>
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </div>
+    </header> -->
+    <section>
+        <form id="forms" method="POST" action="{% url 'editar' item.id %}"> {% csrf_token %}
+        <div id="itens">
+            <div id="btBotoes">
+                <div id="btAlt">
+                    <div id="btFinalizar">
+                        <a href="">
+                            <i id="finalizar" class="fa-solid fa-check"></i>
+                            Finalizar
+                        </a>
+                    </div>
+                    <div id="btEditar">
+                        <a href=""> <i id="editar" class="fa-solid fa-pen-to-square"></i>
+                            Editar
+                        </a>
+                    </div>
+                    <div id="btExcluir">
+                        <a href="">
+                            <i id="excluir" class="fa-solid fa-trash-can"></i>
+                            Excluir
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <i onclick="close()" id="btClose" class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            <p>Titulo</p>
+            <input value="{{item.titulo}}" name="titulo" type="text" id="tituloTarefa">
+            <p>Descrição</p>
+            <input value="{{item.descricao}}" name="descricao" type="text" id="descricao">
+            {% comment %} Colocar TextArea {% endcomment %}
+            <p>Data</p>
+            <input value="{{item.datas}}" name="datas" type="text" name="" id="dataHora">
+            <p>Status</p>
+            <select name="status" name="cars" id="cars">
+                <option value="pendente">Pendente</option>
+                <option value="finalizado">Finalizado</option>
+            </select>
+            <div id="btCad">
+                <button type="submit" id="btCadSalv">Cadastrar</button>
+                {% comment %} <a onclick="btCadastrar()" id="btCadSalv" href="">Cadastrar</a> {% endcomment %}
+            </div>
+        </div>
+    </form>
+    </section>
+</body>
+
+</html>
