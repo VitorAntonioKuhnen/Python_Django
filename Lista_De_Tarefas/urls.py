@@ -9,5 +9,4 @@ urlpatterns = [
     path('deletar/<int:id>/', views.deletar, name='deletar'),
     path('altStatus/<int:id>/', views.altStatus, name='altStatus'),
     path('editar/<int:id>/', views.editar, name='editar'),
-    path('logar', views.logar, name='logar'),
 ]

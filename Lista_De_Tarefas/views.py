@@ -1,14 +1,19 @@
 from django.shortcuts import render, redirect
 from .models import Tarefas
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(redirect_field_name='logar')
 def lista(request):
     tarefas = Tarefas.objects.all()
     return render(request, 'listas.html', {'tarefas':tarefas})
 
+@login_required(redirect_field_name='logar')
 def adicionar(request):
     return render(request, 'cadLista.html')
 
+@login_required(redirect_field_name='logar')
 def adicionar_item(request):
     titulo = request.POST.get('titulo')
     descricao = request.POST.get('descricao')
@@ -24,18 +29,19 @@ def adicionar_item(request):
     
     return redirect('index')
 
+@login_required(redirect_field_name='logar')
 def deletar(request, id):
     Tarefas.objects.get(id=id).delete()
     return redirect('index')
 
-
+@login_required(redirect_field_name='logar')
 def altStatus(request, id):
     tf = Tarefas.objects.get(id=id)
     tf.status = True
     tf.save()   
     return redirect('index')
 
-
+@login_required(redirect_field_name='logar')
 def editar(request, id):
 
     item = Tarefas.objects.get(id=id)
@@ -59,19 +65,3 @@ def editar(request, id):
         return redirect('index')
     else:       
         return render(request, 'altLista.html', {'item':item})
-
-
-def logar(request):
-    if request.method == 'POST':
-        usuario = request.POST.get('usuario')
-        senha = request.POST.get('senha')
-        check = auth.authenticate(request, username=usuario, password=senha)
-        
-        if check is not None:
-            auth.login(request, check)
-            print(check)
-            return redirect('index')
-        else:
-            return redirect('logar')
-    else:        
-        return render(request, 'login.html')

@@ -11,8 +11,14 @@
 </head>
 
 <body>
+    {% for message in messages %}
+        {% if message  %}
+            <h1>{{message}}</h1>
+        {% endif %}
+    {% endfor %}
     <form class="bloco" method="POST"> {% csrf_token %}
         <h1>Login</h1>
+
         <div class="campos">
             <p>Usuario</p>
             <input name="usuario" class="inp" type="text" placeholder="EX: vitor.kuhnen">
@@ -33,8 +39,8 @@
                 <button type="submit" class="logar">Logar</button>
             </a>
 
-            <a href="">
-                <button class="cadastrar">Cadastrar</button>
+            <a href="{% url 'cadastro' %}">Cadastro
+                {% comment %} <button class="cadastrar">Cadastrar</button> {% endcomment %}
             </a>
         </div>
     </form>
