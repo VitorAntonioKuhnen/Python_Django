@@ -44,7 +44,7 @@ def cadastro(request):
                 messages.error(request, 'Usuario informado é menor que 3 caracters!!')
                 return redirect('cadastro') 
         else:
-            messages.error(request, 'Usuario informado é menor que 3 caracters!!')
+            messages.error(request, 'Usuario informado não pode ser vazil!!')
             return redirect('cadastro')    
     else:
         return render(request, 'cadastro.html')    
