@@ -6,8 +6,13 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(redirect_field_name='logar')
 def lista(request):
-    tarefas = Tarefas.objects.all()
-    return render(request, 'listas.html', {'tarefas':tarefas})
+
+    if request.user.is_superuser:
+        tarefas = Tarefas.objects.all() #Permissão para que os super usuarios possam verificar mais de um item
+        return render(request, 'listas.html', {'tarefas':tarefas})
+    else:
+        tarefas = Tarefas.objects.filter(usuario_id=request.user.id) #Filtro para trazer apenas a lista pertencente ao usuario logado
+        return render(request, 'listas.html', {'tarefas':tarefas})
 
 @login_required(redirect_field_name='logar')
 def adicionar(request):
@@ -25,7 +30,7 @@ def adicionar_item(request):
     else:
         status = False
     
-    Tarefas.objects.create(titulo=titulo, descricao=descricao, datas=datas, status=status)
+    Tarefas.objects.create(usuario_id=request.user.id, titulo=titulo, descricao=descricao, datas=datas, status=status) # foi necessario adicionar o usuario_id=request.user.id para cadastrar que o usuario atual é o dono desta lista 
     
     return redirect('index')
 
@@ -65,3 +70,9 @@ def editar(request, id):
         return redirect('index')
     else:       
         return render(request, 'altLista.html', {'item':item})
+
+def buscar(request):
+    termo = request.GET.get('termo')
+
+    tarefas = Tarefas.objects.filter(titulo__icontains=termo)
+    return render(request, 'listas.html', {'tarefas':tarefas})        

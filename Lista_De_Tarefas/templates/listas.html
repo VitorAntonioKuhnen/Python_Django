@@ -27,8 +27,14 @@
         </div>
     </header>
     <section>
-        <form action="">
+        
             <div id="main">
+            
+                <form action="{% url 'buscar' %}" method="GET">
+                    <input type="text" name="termo">
+                    <button type="submit">Buscar</button>
+                </form>
+
                 <h3 id="titulo">Sua Lista de Tarefas</h3>
                 <a onclick="abreiframe()" id="novaTarefa" href="{% url 'adicionar' %}">Nova Tarefa +
                 </a>
@@ -38,6 +44,9 @@
                 </div>
                 <table id="tabela">
                     <tr id="cabecario">
+                        {% if user.is_superuser %}
+                        <th>Dono Tarefa</th>
+                        {% endif %}
                         <th id="nmTarefa">Tarefas</th>
                         <th id="nmDesc">Descrição</th>
                         <th id="nmData">Data</th>
@@ -47,6 +56,9 @@
 
                     {% for tarefa in tarefas %}
                     <tr id="tbody">
+                        {% if user.is_superuser %}
+                        <td>{{tarefa.usuario.username}}</td>
+                        {% endif %}
                         <td><a href="{% url 'editar' tarefa.id %}">{{tarefa.titulo}}</a></td>
                         <td>{{tarefa.descricao}}</td>
                         <td>{{tarefa.datas}}</td>
@@ -62,7 +74,6 @@
                             <a href="{% url 'deletar' tarefa.id %}">
                                 <i id="excluir" href="{% url 'deletar' tarefa.id %}" class="fa-solid fa-trash-can"></i>
                             </a>
-                            <!-- <i id="excluir" href="{% url 'deletar' tarefa.id %}" class="fa-solid fa-trash-can"></i> -->
                         </td>
                     </tr>
                     {% endfor %}
@@ -72,7 +83,6 @@
                     <a href="">2</a>
                 </div>
             </div>
-        </form>
     </section>
 </body>
 

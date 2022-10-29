@@ -28,23 +28,19 @@ def cadastro(request):
         usuario = request.POST.get('usuario')
         senha = request.POST.get('senha')
         senha_2 = request.POST.get('senha_2')
-        if len(usuario) == "":
-            if len(usuario)>= 3:
-                if senha == senha_2:
-                    if len(senha) >= 5 and len(senha) <= 12:
-                        User.objects.create_user(username=usuario, password=senha)
-                        return redirect('logar')
-                    else:
-                        messages.error(request, 'Senha é menor que 5 ou maior que 12 caracteres!!') 
-                        return redirect('cadastro')
+        if len(usuario)>= 3:
+            if senha == senha_2:
+                if len(senha) >= 5 and len(senha) <= 12:
+                    User.objects.create_user(username=usuario, password=senha)
+                    return redirect('logar')
                 else:
-                    messages.error(request, 'Senha informadas são diferentes!!') 
+                    messages.error(request, 'Senha é menor que 5 ou maior que 12 caracteres!!') 
                     return redirect('cadastro')
             else:
-                messages.error(request, 'Usuario informado é menor que 3 caracters!!')
-                return redirect('cadastro') 
+                messages.error(request, 'Senha informadas são diferentes!!') 
+                return redirect('cadastro')
         else:
-            messages.error(request, 'Usuario informado não pode ser vazil!!')
-            return redirect('cadastro')    
+            messages.error(request, 'Usuario informado é menor que 3 caracters!!')
+            return redirect('cadastro')   
     else:
         return render(request, 'cadastro.html')    
